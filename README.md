@@ -1,5 +1,16 @@
 # HashNIRL
 
+## 🧪 In-House Deployment
+
+To validate the practical effectiveness of the proposed method, we developed a self-designed spectral acquisition instrument and deployed HashNIRL on it.
+
+### Device Overview
+
+![In-House Device](images/device.jpg)
+
+
+
+
 ## 🔧 Environment Setup
 
 To run the code successfully, please set up the environment by installing all required dependencies:
