@@ -120,7 +120,7 @@ parser.add_argument('--use_multi_gpu', action='store_true', help='use multiple g
 parser.add_argument('--devices', type=str, default='0,1,2,3', help='device ids of multile gpus')
 parser.add_argument('--test_flop', action='store_true', default=False, help='See utils/tools for usage')
 # for NIR dataset
-parser.add_argument('--data_root', default='/data/home/wxl22/NIROOD/datasets',type=str, help='root for datasets')
+parser.add_argument('--data_root', default='./NIROOD/datasets',type=str, help='root for datasets')
 parser.add_argument('--data_path', choices=['Chunjian_size', 'Chunjian_area', 'manggo_set', 'manggo_region', 'manggo_HarvestTime', 'manggo_maturity'], default='Chunjian_size', type=str, help='dataset name')
 parser.add_argument('--seed', default=2022, type=int, help='random seed')
 parser.add_argument('--seq_len', type=int, default=380, help='input sequence length') ###

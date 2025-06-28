@@ -70,7 +70,7 @@ parser.add_argument('--ssl_temp', type=float, default=0.5, help='SSL Temp')
 parser.add_argument('--proj_mask', type=float, default=0.5, help='SSL proj_mask')
 parser.add_argument('--output_path', type=str, default='experiment_results.csv')
 # NIROOD setup
-parser.add_argument('--root', default='/data/home/wxl22/NIROOD/datasets',type=str, help='root for datasets')
+parser.add_argument('--root', default='./NIROOD/datasets',type=str, help='root for datasets')
 parser.add_argument('--dataset', choices=['Chunjian_size', 'Chunjian_area', 'manggo_set', 'manggo_region', 'manggo_HarvestTime', 'manggo_maturity', 'Chunjian_area_rw'], default='Chunjian_area_rw', type=str, help='dataset name')
 parser.add_argument('--batch_size', default=64, type=int, help='batch size')
 parser.add_argument('--device', default=0, type=int, help='cuda device')
@@ -390,7 +390,7 @@ for restart in range(flags.n_restarts):
 
             if test_mse < best_test_mse:
                 best_test_mse = test_mse
-                torch.save({'Y_true':y_true, 'Y_pred':y_pred}, os.path.join('/data/home/wxl22/NIROOD/logs/best_result/rw', 'divil.pt'))
+                torch.save({'Y_true':y_true, 'Y_pred':y_pred}, os.path.join('./NIROOD/logs/best_result/rw', 'divil.pt'))
                 best_metrics = {
                     "step": step,
                     "test_mse": test_mse.item(),
