@@ -5,21 +5,15 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import roc_auc_score, recall_score, f1_score, average_precision_score, matthews_corrcoef
 from tqdm import tqdm
 def set_seed(seed):
-    """
-    设置所有随机种子以确保结果的可重复性。
+   
+    random.seed(seed)  
+    np.random.seed(seed) 
+    torch.manual_seed(seed)  
+    torch.cuda.manual_seed(seed) 
+    torch.cuda.manual_seed_all(seed) 
 
-    参数:
-        seed (int): 随机种子值。
-    """
-    random.seed(seed)  # Python 的随机模块
-    np.random.seed(seed)  # NumPy 的随机模块
-    torch.manual_seed(seed)  # PyTorch 的 CPU 随机模块
-    torch.cuda.manual_seed(seed)  # PyTorch 的 GPU 随机模块
-    torch.cuda.manual_seed_all(seed)  # PyTorch 的多 GPU 随机模块
-
-    # 为了确保 PyTorch 的结果是可重复的
-    torch.backends.cudnn.deterministic = True  # 确保使用确定性算法
-    torch.backends.cudnn.benchmark = False  # 禁用 cuDNN 的自动优化
+    torch.backends.cudnn.deterministic = True 
+    torch.backends.cudnn.benchmark = False 
 
 
 
@@ -54,20 +48,7 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import numpy as np
 
 def evaluate(trueYAll, predYAll, metric=['r2', 'rmse', 'rpd', 'rer', 'mse', 'mae', 'mape']):
-    """
-    评估回归模型的性能，计算并返回不同的评估指标。
-
-    参数:
-    - trueYAll: 真实标签列表（经过 .cpu().numpy() 处理后）
-    - predYAll: 模型预测值列表（经过 .cpu().numpy() 处理后）
-    - metric: 需要计算的评估指标（默认是 ['r2', 'rmse', 'rpd', 'rer', 'mse', 'mae']）
-
-    返回:
-    - result: 各种评估指标的字典
-    """
-    # 转换为 numpy 数组
-    # trueYAll = np.concatenate(trueYAll, axis=0)
-    # predYAll = np.concatenate(predYAll, axis=0)
+   
 
     result = {}
 
@@ -111,7 +92,7 @@ def validate_model(model, val_loader, criterion, device, args, label_scaler, ret
                 y_pred = model(data)
                 loss = criterion(y_pred, labels)
 
-                # 反归一化
+
                 y_pred_np = y_pred.detach().cpu().numpy().reshape(-1, 1)
                 y_true_np = labels.detach().cpu().numpy().reshape(-1, 1)
             else:
@@ -119,11 +100,11 @@ def validate_model(model, val_loader, criterion, device, args, label_scaler, ret
                 y_pred = model(graph, args)
                 loss = criterion(y_pred, graph.y)
 
-                # 反归一化（注意 graph.y 也是归一化后的）
+       
                 y_pred_np = y_pred.detach().cpu().numpy().reshape(-1, 1)
                 y_true_np = graph.y.detach().cpu().numpy().reshape(-1, 1)
 
-            # 使用 label_scaler 恢复原始值
+    
             y_pred_orig = label_scaler.inverse_transform(y_pred_np).squeeze()
             y_true_orig = label_scaler.inverse_transform(y_true_np).squeeze()
             
@@ -138,35 +119,6 @@ def validate_model(model, val_loader, criterion, device, args, label_scaler, ret
         return avg_val_loss, eval_result
     else:
         return avg_val_loss, eval_result, trueYAll, predYAll
-
-
-# def validate_model(model, val_loader, criterion, device, args):
-#     model.eval()  # 设置模型为评估模式
-#     val_loss = 0
-#     trueYAll = []
-#     predYAll = []
-#     with torch.no_grad():  # 不计算梯度
-#         for batch in val_loader:
-#             if args.model.lower() != 'ours':
-#                 data, labels = batch
-#                 data, labels = data.to(device), labels.to(device)
-#                 # 前向传播
-#                 y_pred = model(data)
-#                 loss = criterion(y_pred, labels)
-#                 trueYAll.append(labels.detach().cpu().numpy().tolist())
-#                 predYAll.append(y_pred.detach().cpu().numpy().tolist())
-#             else:
-#                 graph = batch.to(device)
-#                 y_pred = model(graph, args)
-#                 loss = criterion(y_pred, graph.y.float())
-#                 trueYAll.append(graph.y.float().detach().cpu().numpy().tolist())
-#                 predYAll.append(y_pred.detach().cpu().numpy().tolist())
-            
-#             # 累加验证损失
-#             val_loss += loss.item()
-#     # 计算每个 epoch 的平均验证损失
-#     avg_val_loss = val_loss / len(val_loader)
-#     return avg_val_loss, evaluate(trueYAll, predYAll, metric=['r2', 'rmse', 'rpd', 'rer', 'mse', 'mae'])
 
 
 
