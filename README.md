@@ -1,7 +1,7 @@
 # HashNIRL: Hash Consistency-based Near-infrared Spectroscopy Invariant Representation Learning for Out-of-distribution Fruit Internal Quality Detection
 
 This repository provides the official implementation of our paper:
-HashNIRL: Hash Consistency-based Near-infrared Spectroscopy Invariant Representation Learning for Out-of-distribution Fruit Internal Quality Detection
+__ HashNIRL: Hash Consistency-based Near-infrared Spectroscopy Invariant Representation Learning for Out-of-distribution Fruit Internal Quality Detection__
 
 ---
 
