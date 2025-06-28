@@ -2,14 +2,11 @@
 
 ## 🧪 In-House Deployment
 
-To validate the practical effectiveness of the proposed method, we developed a self-designed spectral acquisition instrument and deployed HashNIRL on it.
-
-### Device Overview
+To demonstrate the practical applicability of the proposed method, a self-developed spectra acquisition instrument was constructed, and the HashNIRL framework was deployed on it for real-world validation, as shown below:
 
 ![In-House Device](images/NIR-equipment.png)
 
-
-
+---
 
 ## 🔧 Environment Setup
 
