@@ -15,7 +15,7 @@ This will create a new Conda environment with the necessary packages.
 ## 📦 Reproducing Results
 Below is a brief introduction to the commands used to run different models in our codebase.
 
-### A simplistic example
+### 💡 A Simple Example of HashNIRL
 Run HashNIRL on the `Chunjian_area` Dataset:
 ```
 python main.py --dataset Chunjian_area --batch_size 64 --epochs 10 --lr 0.0005 --threshold 0.05 --window_size 2 --rate 0.75 --batch_rate 0.1 --drop_rate 0.4 --invCont_coe 1.6
