@@ -6,7 +6,7 @@ To validate the practical effectiveness of the proposed method, we developed a s
 
 ### Device Overview
 
-![In-House Device](images/device.jpg)
+![In-House Device](images/NIR-equipment.png)
 
 
 
