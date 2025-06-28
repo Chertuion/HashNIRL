@@ -22,7 +22,7 @@ python main.py --dataset Chunjian_area --batch_size 64 --epochs 10 --lr 0.0005 -
 ```
 
 ### To obtain results of ERM
-simply run
+Simply run
 ```
 python main.py --model 1dcnn
 ```
