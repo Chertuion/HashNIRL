@@ -35,6 +35,9 @@ Run HashNIRL on the `Chunjian_area` Dataset:
 python main.py --dataset Chunjian_area --batch_size 64 --lr 0.0005 --threshold 0.05 --window_size 2 --rate 0.75 --batch_rate 0.1 --drop_rate 0.4 --epochs 10 --invMod_coe 1 --invCont_coe 1.6
 ```
 
+### 📄 Log Files
+We provide detailed training logs under the `log/` directory for reproducibility and further analysis.
+
 ### To obtain results of ERM
 Simply run
 ```
